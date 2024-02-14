@@ -6,7 +6,7 @@
 
 Inside of `index.ts` file, there is code that is trying to atomically group 2 payment transactions and synchronously send them using atomic transfers. The code is using the [Algorand JavaScript SDK](https://github.com/algorand/js-algorand-sdk) and the [AlgoKit Utils TypeScript](https://github.com/algorandfoundation/algokit-utils-ts/tree/main). 
 
-However, if you try to run the `index.ts` file after going into the `chllenge` directory, opening Docker Desktop, and then running:
+However, if you try to run the `index.ts` file after going into the `challenge` directory, opening Docker Desktop, and then running:
 ```bash
 algokit bootstrap all
 algokit localnet start

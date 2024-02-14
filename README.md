@@ -5,13 +5,12 @@
 This repository has a folder on the root level, which contains the fix the bug challenge codebase. Inside the folder, you will find another README that has specific instructions for this challenge.  
 
 ### First set up your development environment
-1. [Fork this repository.](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/fork-a-repo)
-2. Go to the directory you want to work in with your terminal and clone the forked repository
+1. Clone the repository
 ```bash
 cd [DIRECTORY_OF_YOUR_CHOICE]
 git clone [FORKED_REPO_URL]
 ```
-3. Open the cloned repository with the code editor of your choosing. The below code example works only if you are using VSCode as your default editor and have the `code .` shorthand set up.
+2. Open the cloned repository with the code editor of your choosing. The below code example works only if you are using VSCode as your default editor and have the `code .` shorthand set up.
 ```bash
 cd [CLONED_REPO]
 code . 

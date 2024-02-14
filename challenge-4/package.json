@@ -2,14 +2,16 @@
   "name": "algorand-puzzle-1",
   "module": "index.ts",
   "type": "module",
-  "devDependencies": {
-    "@types/bun": "latest"
+  "scripts": {
+    "start": "tsx -r dotenv/config index.ts"
   },
   "peerDependencies": {
     "typescript": "^5.0.0"
   },
   "dependencies": {
     "@algorandfoundation/algokit-utils": "^5.3.2",
-    "algosdk": "^2.7.0"
+    "algosdk": "^2.7.0",
+    "dotenv": "^16.4.4",
+    "tsx": "^4.7.1"
   }
 }

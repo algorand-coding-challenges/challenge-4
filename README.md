@@ -9,7 +9,7 @@ However, if you try to run the `index.ts` file after going into the `challenge` 
 ```bash
 algokit bootstrap all
 algokit localnet start
-npm start
+npm run start
 ```
 it will fail and show this error: `TypeError: signer is not a function`
 

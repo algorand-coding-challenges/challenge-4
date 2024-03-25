@@ -36,7 +36,7 @@ git clone [FORKED_REPO_URL]
 ```bash
 algokit bootstrap all
 ```
-This command will install all dependecies and also generate a `.env` file for you.
+This command will install all dependencies and also generate a `.env` file for you.
 
 Video walkthrough of forking and cloning this repository:
 
@@ -48,7 +48,7 @@ Now you are ready to fix the bug!
 
 1. Open Docker Desktop and launch Algorand localnet by running `algokit localnet start` in your terminal [For more info click me!](https://github.com/algorandfoundation/algokit-cli/blob/main/docs/features/localnet.md#creating--starting-the-localnet). 
 3. Go to `./index.ts` and read the comments on the file and fix the bug!
-4. After fixing the bug run the below command inside of `challenge` folder: 
+4. After fixing the bug run the below command inside of the `challenge` folder: 
 ```bash
 npm run start
 ```

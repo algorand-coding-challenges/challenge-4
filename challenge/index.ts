@@ -1,4 +1,4 @@
-import algosdk  from "algosdk";
+import algosdk from "algosdk";
 import * as algokit from '@algorandfoundation/algokit-utils';
 
 // Set up algod client
@@ -32,6 +32,8 @@ const ptxn1 = algosdk.makePaymentTxnWithSuggestedParamsFromObject({
     to: receiver.addr,
     amount: 1000000,// 1 ALGO
 });
+
+/// <reference lib="dom" />
 
 const ptxn2 = algosdk.makePaymentTxnWithSuggestedParamsFromObject({
     from: sender.addr,

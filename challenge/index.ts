@@ -45,7 +45,6 @@ const ptxn2 = algosdk.makePaymentTxnWithSuggestedParamsFromObject({
 
 const signer: TransactionSigner = new SigningAccount(sender, sender.addr)
     .signer;
-// const senderSigner = algosdk.makeBasicAccountTransactionSigner(sender);
 
 const atc = new algosdk.AtomicTransactionComposer()
 atc.addTransaction({txn: ptxn1, signer})

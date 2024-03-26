@@ -1,4 +1,4 @@
-import algosdk from "algosdk";
+import algosdk, {makeBasicAccountTransactionSigner} from "algosdk";
 import * as algokit from '@algorandfoundation/algokit-utils';
 
 // Set up algod client
@@ -42,9 +42,11 @@ const ptxn2 = algosdk.makePaymentTxnWithSuggestedParamsFromObject({
     amount: 2000000, // 2 ALGOs
 });
 
+const acctTxSender = makeBasicAccountTransactionSigner(sender)
+
 const atc = new algosdk.AtomicTransactionComposer()
-atc.addTransaction({txn: ptxn1, signer: sender})
-atc.addTransaction({txn: ptxn2, signer: sender})
+atc.addTransaction({txn: ptxn1, signer: acctTxSender})
+atc.addTransaction({txn: ptxn2, signer: acctTxSender})
 
 const result = await algokit.sendAtomicTransactionComposer({atc:atc, sendParams: {suppressLog:true}}, algodClient)
 console.log(`The first payment transaction sent ${result.transactions[0].amount} microAlgos and the second payment transaction sent ${result.transactions[1].amount} microAlgos`)

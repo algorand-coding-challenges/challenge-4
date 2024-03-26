@@ -2,7 +2,7 @@ import algosdk from "algosdk";
 import * as algokit from '@algorandfoundation/algokit-utils';
 
 // Set up algod client
-const algodClient = algokit.getAlgoClient()
+const algodClient = algokit.getAlgoClient();
 
 // Retrieve 2 accounts from localnet kmd
 const sender = await algokit.getLocalNetDispenserAccount(algodClient)
@@ -26,6 +26,7 @@ When solved correctly, the console should print out the following:
 */
 
 const suggestedParams = await algodClient.getTransactionParams().do();
+
 const ptxn1 = algosdk.makePaymentTxnWithSuggestedParamsFromObject({
     from: sender.addr,
     suggestedParams,
@@ -42,9 +43,10 @@ const ptxn2 = algosdk.makePaymentTxnWithSuggestedParamsFromObject({
     amount: 2000000, // 2 ALGOs
 });
 
+const signer = algosdk.makeBasicAccountTransactionSigner(sender);
 const atc = new algosdk.AtomicTransactionComposer()
-atc.addTransaction({txn: ptxn1, signer: sender})
-atc.addTransaction({txn: ptxn2, signer: sender})
+atc.addTransaction({txn: ptxn1, signer: signer})
+atc.addTransaction({txn: ptxn2, signer: signer})
 
 const result = await algokit.sendAtomicTransactionComposer({atc:atc, sendParams: {suppressLog:true}}, algodClient)
 console.log(`The first payment transaction sent ${result.transactions[0].amount} microAlgos and the second payment transaction sent ${result.transactions[1].amount} microAlgos`)

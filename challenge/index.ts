@@ -45,8 +45,8 @@ const ptxn2 = algosdk.makePaymentTxnWithSuggestedParamsFromObject({
 const signer = algokit.getSenderTransactionSigner(sender)
 
 const atc = new algosdk.AtomicTransactionComposer()
-atc.addTransaction({txn: ptxn1, signer: signer})
-atc.addTransaction({txn: ptxn2, signer: signer})
+atc.addTransaction({txn: ptxn1, signer})
+atc.addTransaction({txn: ptxn2, signer})
 
 const result = await algokit.sendAtomicTransactionComposer({atc:atc, sendParams: {suppressLog:true}}, algodClient)
 console.log(`The first payment transaction sent ${result.transactions[0].amount} microAlgos and the second payment transaction sent ${result.transactions[1].amount} microAlgos`)

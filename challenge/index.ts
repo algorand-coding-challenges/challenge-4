@@ -42,10 +42,15 @@ const ptxn2 = algosdk.makePaymentTxnWithSuggestedParamsFromObject({
     amount: 2000000, // 2 ALGOs
 });
 
-const atc = new algosdk.AtomicTransactionComposer()
-atc.addTransaction({txn: ptxn1, signer: sender})
-atc.addTransaction({txn: ptxn2, signer: sender})
+// Assuming sender comes with a secret key or you can derive it from the mnemonic:
+const signer = algosdk.makeBasicAccountTransactionSigner(sender);
 
-const result = await algokit.sendAtomicTransactionComposer({atc:atc, sendParams: {suppressLog:true}}, algodClient)
-console.log(`The first payment transaction sent ${result.transactions[0].amount} microAlgos and the second payment transaction sent ${result.transactions[1].amount} microAlgos`)
+const atc = new algosdk.AtomicTransactionComposer();
 
+// Now pass the signer as a function to each transaction
+atc.addTransaction({ txn: ptxn1, signer: signer });
+atc.addTransaction({ txn: ptxn2, signer: signer });
+
+// Now your code for executing the transaction composer should work as expected:
+const result = await algokit.sendAtomicTransactionComposer({ atc: atc, sendParams: { suppressLog: true } }, algodClient);
+console.log(`The first payment transaction sent ${result.transactions[0].amount} microAlgos and the second payment transaction sent ${result.transactions[1].amount} microAlgos`);
